@@ -52,9 +52,8 @@ export class DeseosService {
   }
 
   borrarLista(lista: Lista) {
-    this.listas = this.listas.filter( listaData => {
-      return listaData.id !== lista.id
-    });
+    var i = this.listas.indexOf(this.obtenerLista(lista.titulo));
+    this.listas.splice(i);
     this.guardarStorage();
   }
   
@@ -75,6 +74,7 @@ export class DeseosService {
       this.listas = JSON.parse(localStorage.getItem('data'));
     }
   }
+
   ordenLista(cont:number){
     if(cont == 0){
       this.listas.sort((a,b) =>{
@@ -87,7 +87,21 @@ export class DeseosService {
         }
       });
     } else {
-      this.listas.sort();
+      this.listas.sort((a, b) => {
+        if(a.creadaEn > b.creadaEn){
+          return 1;
+        } 
+        if(a.creadaEn < b.creadaEn){
+          return -1;
+        } 
+        if(a.creadaEn == b.creadaEn){
+           if(a.toLowerCase()> b.toLowerCase()) {
+            return 1;
+          } else if(a.toLowerCase() < b.toLowerCase()) {
+            return -1;
+          }
+        }
+      });
     }
   }
 }

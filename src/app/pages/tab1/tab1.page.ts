@@ -75,7 +75,6 @@ export class Tab1Page {
             return;
           } else {
             const listaId = this.deseosService.borrarLista(data.titulo);
-            this.router.navigateByUrl(`/tabs/tab1/agregar/${listaId}`);
           }
         }
       }]
