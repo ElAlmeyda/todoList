@@ -75,35 +75,6 @@ export class DeseosService {
     }
   }
 
-  ordenLista(cont:number){
-    if(cont == 0){
-      this.listas.sort((a,b) =>{
-        if(a.toLowerCase()> b.toLowerCase()) {
-          return 1;
-        } else if(a.toLowerCase() < b.toLowerCase()) {
-          return -1;
-        } else {
-          return 0;
-        }
-      });
-    } else {
-      this.listas.sort((a, b) => {
-        if(a.creadaEn > b.creadaEn){
-          return 1;
-        } 
-        if(a.creadaEn < b.creadaEn){
-          return -1;
-        } 
-        if(a.creadaEn == b.creadaEn){
-           if(a.toLowerCase()> b.toLowerCase()) {
-            return 1;
-          } else if(a.toLowerCase() < b.toLowerCase()) {
-            return -1;
-          }
-        }
-      });
-    }
-  }
 }
 
 
